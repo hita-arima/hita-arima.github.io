@@ -1,0 +1,1997 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Justin Maurin — ePortfolio</title>
+    <style>
+      :root {
+        --bg: #0e0e10;
+        --surface: #18181b;
+        --line: #2a2a2f;
+        --text: #f1f1f3;
+        --muted: #a1a1aa;
+        --accent: #ff5c7a;
+        --onacc: #1a0a0e;
+        --accent2: #ff5c7a;
+        color-scheme: dark;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: light) {
+        :root:not([data-theme="dark"]) {
+          --bg: #faf7f7;
+          --surface: #fff;
+          --line: #e6dede;
+          --text: #1b1b1d;
+          --muted: #5f5f66;
+          --accent: #e63e64;
+          --onacc: #fff;
+          --accent2: #c42a50;
+          color-scheme: light;
+        }
+      }
+      :root[data-theme="light"] {
+        --bg: #faf7f7;
+        --surface: #fff;
+        --line: #e6dede;
+        --text: #1b1b1d;
+        --muted: #5f5f66;
+        --accent: #e63e64;
+        --onacc: #fff;
+        --accent2: #c42a50;
+        color-scheme: light;
+      }
+      :root[data-theme="dark"] {
+        --bg: #0e0e10;
+        --surface: #18181b;
+        --line: #2a2a2f;
+        --text: #f1f1f3;
+        --muted: #a1a1aa;
+        --accent: #ff5c7a;
+        --onacc: #1a0a0e;
+        --accent2: #ff5c7a;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          16px/1.6 system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+      }
+      a {
+        color: var(--accent2);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      header {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 20;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 auto;
+        height: env(safe-area-inset-top, 0px);
+        z-index: 30;
+        background: var(--bg);
+      }
+      nav {
+        max-width: 1080px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+        overflow-x: auto;
+      }
+      .logo {
+        font-weight: 800;
+        margin-right: auto;
+        color: var(--text);
+        white-space: nowrap;
+      }
+      .logo b {
+        color: var(--accent2);
+      }
+      nav a.t {
+        color: var(--muted);
+        padding: 6px 12px;
+        border-radius: 99px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      nav a.t:hover {
+        color: var(--text);
+        text-decoration: none;
+      }
+      nav a.t.on {
+        background: var(--accent);
+        color: var(--onacc);
+      }
+      button.ghost {
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        border-radius: 99px;
+        padding: 5px 11px;
+        cursor: pointer;
+      }
+      main {
+        max-width: 1080px;
+        margin: auto;
+        padding: 40px 20px 70px;
+      }
+      section {
+        padding: 36px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      section:last-child {
+        border: 0;
+      }
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        line-height: 1.1;
+        margin: 0.2em 0;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--accent2);
+      }
+      h2 {
+        font-size: 1.7rem;
+        margin: 0 0 6px;
+      }
+      h3 {
+        margin: 28px 0 12px;
+        font-size: 1.15rem;
+      }
+      .kicker {
+        color: var(--accent2);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .lead {
+        color: var(--muted);
+        max-width: 640px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 40px;
+        align-items: center;
+        padding: 20px 0 30px;
+      }
+      .photo {
+        aspect-ratio: 1;
+        border-radius: 24px;
+        background: linear-gradient(135deg, var(--accent), #3a1420);
+        display: grid;
+        place-items: center;
+        font-size: 4rem;
+        font-weight: 800;
+        color: var(--onacc);
+        overflow: hidden;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .btn {
+        display: inline-block;
+        padding: 11px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        margin: 6px 8px 0 0;
+        border: 1px solid var(--accent);
+        color: var(--text);
+      }
+      .btn.p {
+        background: var(--accent);
+        color: var(--onacc);
+      }
+      .btn:hover {
+        text-decoration: none;
+        filter: brightness(1.12);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 20px;
+        transition: 0.2s;
+      }
+      .card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .card h4 {
+        margin: 6px 0;
+      }
+      .card p {
+        margin: 6px 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 12px;
+        padding: 2px 10px;
+        margin: 2px 4px 2px 0;
+        border-radius: 99px;
+        background: color-mix(in srgb, var(--accent) 18%, transparent);
+        color: var(--accent2);
+      }
+      .meta {
+        font-size: 12px;
+        color: var(--accent2);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .tl {
+        border-left: 2px solid var(--line);
+        margin-left: 6px;
+      }
+      .tl .it {
+        position: relative;
+        padding: 0 0 22px 22px;
+      }
+      .tl .it::before {
+        content: "";
+        position: absolute;
+        left: -7px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .tl .it b {
+        display: block;
+      }
+      .tl .it span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      details {
+        margin-top: 8px;
+      }
+      summary {
+        cursor: pointer;
+        color: var(--accent2);
+        font-size: 14px;
+      }
+      .star p {
+        margin: 4px 0;
+      }
+      .star b {
+        color: var(--accent2);
+      }
+      .video {
+        aspect-ratio: 16/9;
+        background: var(--surface);
+        border: 1px dashed var(--line);
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        overflow: hidden;
+      }
+      .video iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .rv {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      main {
+        overflow-x: clip;
+      }
+      .hero {
+        position: relative;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -80px;
+        width: 440px;
+        height: 440px;
+        background: radial-gradient(
+          circle,
+          color-mix(in srgb, var(--accent) 26%, transparent),
+          transparent 65%
+        );
+        z-index: -1;
+        pointer-events: none;
+      }
+      .art {
+        position: relative;
+      }
+      .chip {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        color: var(--accent2);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+        animation: fl 5s ease-in-out infinite;
+      }
+      .c0 {
+        top: -14px;
+        left: -14px;
+      }
+      .c1 {
+        top: 12%;
+        right: -18px;
+        animation-delay: -1s;
+      }
+      .c2 {
+        bottom: 14%;
+        left: -20px;
+        animation-delay: -2s;
+      }
+      .c3 {
+        bottom: -14px;
+        right: 12%;
+        animation-delay: -3s;
+      }
+      @keyframes fl {
+        50% {
+          transform: translateY(-8px) rotate(-4deg);
+        }
+      }
+      .wave {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px;
+        height: 46px;
+        margin: 24px 0 6px;
+      }
+      .wave i {
+        flex: 1;
+        max-width: 8px;
+        height: var(--h);
+        border-radius: 4px;
+        background: linear-gradient(var(--accent2), var(--accent));
+        animation: wv 1.4s ease-in-out infinite;
+        animation-delay: var(--d);
+      }
+      @keyframes wv {
+        50% {
+          transform: scaleY(0.3);
+        }
+      }
+      .ico {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: color-mix(in srgb, var(--accent) 16%, transparent);
+        color: var(--accent2);
+        margin-bottom: 8px;
+      }
+      .kicker svg,
+      .btn svg {
+        vertical-align: -3px;
+        margin-right: 6px;
+      }
+      .tag svg {
+        vertical-align: -2px;
+        margin-right: 4px;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        width: 44px;
+        height: 3px;
+        border-radius: 3px;
+        background: var(--accent);
+        margin-top: 8px;
+      }
+      .tl .it::before {
+        transition: transform 0.2s;
+      }
+      .tl .it:hover::before {
+        transform: scale(1.5);
+      }
+      .video {
+        text-align: center;
+      }
+      .video svg {
+        color: var(--accent2);
+        margin-bottom: 6px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+        padding: 26px 20px;
+      }
+      @media (max-width: 760px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          max-width: 220px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="nav">
+        <a class="logo" href="#welcome">Justin<b>.</b></a
+        ><a class="t" data-id="welcome" href="#welcome">Welcome</a
+        ><a class="t" data-id="engineering" href="#engineering">Engineering</a
+        ><a class="t on" data-id="mobility" href="#mobility">International</a
+        ><a class="t" data-id="sustainability" href="#sustainability"
+          >Sustainability</a
+        ><a class="t" data-id="sport" href="#sport">Activities</a
+        ><a class="t" data-id="career" href="#career">Career</a
+        ><button class="ghost" id="th" aria-label="Toggle theme">◐</button>
+      </nav>
+    </header>
+    <main id="main">
+      <section id="welcome">
+        <div class="hero">
+          <div>
+            <div class="kicker">
+              Engineering student · ENSEEIHT, Toulouse INP
+            </div>
+            <h1>
+              I build <em>robust software</em>, from low-level code to full
+              applications.
+            </h1>
+            <p class="lead">
+              After two years of preparatory classes (MP2I – MPI*), I joined
+              ENSEEIHT to specialise in software engineering. I enjoy demanding
+              languages (C, Ada, Rust, OCaml) and code that can be verified and
+              maintained.
+            </p>
+            <a class="btn p" href="#engineering">View my projects</a
+            ><a class="btn" href="assets/CV-FR.pdf">CV (FR)</a
+            ><a class="btn" href="assets/CV-EN.pdf">CV (EN)</a>
+            <p class="meta" style="margin-top: 18px">Toulouse</p>
+          </div>
+          <div class="art">
+            <div class="photo">JM</div>
+            <span class="chip c0"
+              ><svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline></svg></span
+            ><span class="chip c1"
+              ><svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle></svg></span
+            ><span class="chip c2"
+              ><svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg></span
+            ><span class="chip c3"
+              ><svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+                ></path></svg
+            ></span>
+          </div>
+        </div>
+        <div>
+          <span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline></svg
+            >C</span
+          ><span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline></svg
+            >OCaml</span
+          ><span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline></svg
+            >Ada</span
+          ><span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline></svg
+            >Python</span
+          ><span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline></svg
+            >Rust</span
+          ><span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"></path>
+              <path d="m13 20 4-9 4 9M14.5 17h5"></path></svg
+            >English B2/C1</span
+          ><span class="tag"
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"></path>
+              <path d="m13 20 4-9 4 9M14.5 17h5"></path></svg
+            >Japanese N5</span
+          >
+        </div>
+        <div class="wave" aria-hidden="true">
+          <i style="--d: 0s; --h: 20%"></i><i style="--d: 0.07s; --h: 71%"></i
+          ><i style="--d: 0.14s; --h: 98%"></i
+          ><i style="--d: 0.21s; --h: 89%"></i
+          ><i style="--d: 0.28s; --h: 46%"></i
+          ><i style="--d: 0.35s; --h: 48%"></i
+          ><i style="--d: 0.42s; --h: 89%"></i
+          ><i style="--d: 0.49s; --h: 98%"></i
+          ><i style="--d: 0.56s; --h: 70%"></i
+          ><i style="--d: 0.63s; --h: 21%"></i
+          ><i style="--d: 0.7s; --h: 72%"></i
+          ><i style="--d: 0.77s; --h: 99%"></i
+          ><i style="--d: 0.84s; --h: 88%"></i
+          ><i style="--d: 0.91s; --h: 45%"></i
+          ><i style="--d: 0.98s; --h: 49%"></i
+          ><i style="--d: 1.05s; --h: 90%"></i
+          ><i style="--d: 1.12s; --h: 98%"></i
+          ><i style="--d: 1.19s; --h: 69%"></i
+          ><i style="--d: 1.26s; --h: 22%"></i
+          ><i style="--d: 1.33s; --h: 73%"></i
+          ><i style="--d: 1.4s; --h: 99%"></i
+          ><i style="--d: 1.47s; --h: 87%"></i
+          ><i style="--d: 1.54s; --h: 44%"></i
+          ><i style="--d: 1.61s; --h: 50%"></i
+          ><i style="--d: 1.68s; --h: 91%"></i
+          ><i style="--d: 1.75s; --h: 98%"></i
+          ><i style="--d: 1.82s; --h: 68%"></i
+          ><i style="--d: 1.89s; --h: 24%"></i
+          ><i style="--d: 1.96s; --h: 74%"></i
+          ><i style="--d: 2.03s; --h: 99%"></i
+          ><i style="--d: 2.1s; --h: 86%"></i
+          ><i style="--d: 2.17s; --h: 42%"></i
+          ><i style="--d: 2.24s; --h: 51%"></i
+          ><i style="--d: 2.31s; --h: 91%"></i
+          ><i style="--d: 2.38s; --h: 97%"></i
+          ><i style="--d: 2.45s; --h: 67%"></i
+          ><i style="--d: 2.52s; --h: 25%"></i
+          ><i style="--d: 2.59s; --h: 75%"></i
+          ><i style="--d: 2.66s; --h: 99%"></i
+          ><i style="--d: 2.73s; --h: 86%"></i
+          ><i style="--d: 2.8s; --h: 41%"></i
+          ><i style="--d: 2.87s; --h: 53%"></i
+          ><i style="--d: 2.94s; --h: 92%"></i
+          ><i style="--d: 3.01s; --h: 97%"></i>
+        </div>
+        <h3>Soft skills</h3>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="m8 12 3 3 5-6"></path>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Rigour</h4>
+            <p>
+              Two years of prep: reasoning, proving and checking every step.
+            </p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Perseverance</h4>
+            <p>A demanding MPI* track with a goal held over the long term.</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Curiosity</h4>
+            <p>
+              From low-level (C, Rust) to functional (OCaml), I pick up new
+              paradigms quickly.
+            </p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="9" cy="8" r="3.5"></circle>
+                <path d="M2 20a7 7 0 0 1 14 0"></path>
+                <circle cx="17" cy="9" r="2.5"></circle>
+                <path d="M17 14a5 5 0 0 1 5 5"></path>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Teamwork</h4>
+            <p>Group projects, with code shared through Git.</p>
+          </div>
+        </div>
+      </section>
+      <section id="engineering">
+        <div class="kicker">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
+            <path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg
+          >01 · Engineering course
+        </div>
+        <h2>Engineering</h2>
+        <h3>Roadmap</h3>
+        <div class="tl">
+          <div class="it rv in" style="">
+            <b>Lycée Janetti</b
+            ><span>2024 · Baccalauréat — Très Bien honours</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>CPGE MP2I – MPI*</b
+            ><span>2024–2026 · Lycée Thiers, Marseille</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>Engineering cycle — Year 1</b
+            ><span>Since Sept. 2026 · ENSEEIHT, Toulouse INP</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>Workshop internship (S6)</b
+            ><span>Summer 2027 · Search in progress</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>Year 2, software track</b><span>2027–2028 · S8 internship</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>International mobility (S9)</b
+            ><span>Autumn 2028 · 17 weeks minimum</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>Engineering degree</b><span>2029 · Master’s level</span>
+          </div>
+        </div>
+        <h3>Projects &amp; productions</h3>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 14v-2a9 9 0 0 1 18 0v2"></path>
+                <path
+                  d="M21 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-5H5a2 2 0 0 0-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <div class="meta">TIPE · CPGE 2025–2026</div>
+            <h4>A Loud Sight — a video game for the blind</h4>
+            <p>
+              A video game playable without sight, built around sound. Based on
+              TheVoice algorithm
+            </p>
+            <div>
+              <span class="tag">Game design</span><span class="tag">Audio</span
+              ><span class="tag">Accessibility</span>
+            </div>
+            <details>
+              <summary>Details (STAR method)</summary>
+              <div class="star">
+                <p>
+                  <b>Situation</b> TIPE research project in preparatory classes,
+                  on accessibility in video games.
+                </p>
+                <p>
+                  <b>Task</b> Design a game that blind players can enjoy fully,
+                  using audio as the main interface.
+                </p>
+                <p><b>Action</b> Game Design in Godot Engine</p>
+                <p><b>Result</b> Concluding with training</p>
+              </div>
+            </details>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </div>
+            <div class="meta">Personal projects · ongoing</div>
+            <h4>Personal music projects</h4>
+            <p>
+              Original tracks composed and produced on Ableton Live and Bitwig.
+              [add link to a track or playlist]
+            </p>
+            <div>
+              <span class="tag">Ableton</span><span class="tag">Bitwig</span
+              ><span class="tag">Music production</span>
+            </div>
+            <details>
+              <summary>Details (STAR method)</summary>
+              <div class="star">
+                <p>
+                  <b>Situation</b> Self-taught music production alongside my
+                  studies.
+                </p>
+                <p><b>Task</b> Compose, arrange and mix complete tracks.</p>
+                <p>
+                  <b>Action</b> Sound design, arrangement and mixing in Ableton
+                  and Bitwig.
+                </p>
+                <p><b>Result</b> 2 EPs and 2 singles</p>
+              </div>
+            </details>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div class="meta">ENSEEIHT · 2026</div>
+            <h4>Ada project — Jeu du Devin</h4>
+            <p>
+              One impact sentence with a figure (e.g. tests, performance,
+              project size).
+            </p>
+            <div>
+              <span class="tag">Ada</span
+              ><span class="tag">Software engineering</span>
+            </div>
+            <details>
+              <summary>Details (STAR method)</summary>
+              <div class="star">
+                <p><b>Situation</b> Programming project at ENSEEIHT.</p>
+                <p><b>Task</b> Code and refineries.</p>
+                <p>
+                  <b>Action</b> A game where an IA guess the number you are
+                  thinking of coded in Ada
+                </p>
+                <p><b>Result</b> Concluding</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section id="mobility">
+        <div class="kicker">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20"></path>
+            <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"></path></svg
+          >02 · International mobility
+        </div>
+        <h2>International</h2>
+        <h3>Languages</h3>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"></path>
+                <path d="m13 20 4-9 4 9M14.5 17h5"></path>
+              </svg>
+            </div>
+            <div class="meta">Level</div>
+            <h4>French</h4>
+            <p>Native</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"></path>
+                <path d="m13 20 4-9 4 9M14.5 17h5"></path>
+              </svg>
+            </div>
+            <div class="meta">Level</div>
+            <h4>English</h4>
+            <p>B2 / C1</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"></path>
+                <path d="m13 20 4-9 4 9M14.5 17h5"></path>
+              </svg>
+            </div>
+            <div class="meta">Level</div>
+            <h4>Japanese</h4>
+            <p>N5 (JLPT)</p>
+          </div>
+        </div>
+        <h3>Mobility project</h3>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20"></path>
+                <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"></path>
+              </svg>
+            </div>
+            <div class="meta">Japan · Tokyo</div>
+          </div>
+        </div>
+      </section>
+      <section id="sustainability">
+        <div class="kicker">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"
+            ></path>
+            <path d="M2 21c0-3 1.9-5.4 5-6"></path></svg
+          >03 · Sustainability &amp; civic engagement
+        </div>
+        <h2>Sustainability</h2>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <path d="M9 9h.01M15 9h.01"></path>
+              </svg>
+            </div>
+            <div class="meta">Participatory theatre · Year 1</div>
+            <h4>The trial of King Kong</h4>
+            <p>
+              Interactive play on sexist and sexual violence and its
+              consequences: I took part in the performance and the discussion
+              that followed.
+            </p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"
+                ></path>
+                <path d="M2 21c0-3 1.9-5.4 5-6"></path>
+              </svg>
+            </div>
+            <div class="meta">Festival · Toulouse</div>
+            <h4>Futur Proche festival</h4>
+            <p>
+              Conferences and workshops with ENSEEIHT and the Toulouse
+              universities on climate challenges, seen through innovations under
+              development. [add what you did or learned]
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="sport">
+        <div class="kicker">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"
+            ></path></svg
+          >04 · Sport &amp; other activities
+        </div>
+        <h2>Activities</h2>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </div>
+            <div class="meta">Ableton Live · Bitwig</div>
+            <h4>Music</h4>
+            <p>
+              I compose and produce music: creativity, patience and attention to
+              detail.
+            </p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="10" cy="10" r="7"></circle>
+                <path d="m15 15 6 6"></path>
+                <circle cx="19" cy="5" r="1.5"></circle>
+              </svg>
+            </div>
+            <div class="meta">Hobby</div>
+            <h4>Table tennis</h4>
+            <p>Reflexes, concentration and a competitive spirit.</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+              </svg>
+            </div>
+            <div class="meta">Hobby</div>
+            <h4>Climbing</h4>
+            <p>Problem solving, trust and perseverance.</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 7V4H6l6 8-6 8h12v-3"></path>
+              </svg>
+            </div>
+            <div class="meta">Passion</div>
+            <h4>Mathematics</h4>
+            <p>Curiosity for proofs and puzzles, well beyond the prep years.</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"></path>
+                <path d="m13 20 4-9 4 9M14.5 17h5"></path>
+              </svg>
+            </div>
+            <div class="meta">Interest</div>
+            <h4>Japanese</h4>
+            <p>Self-taught, level N5, aiming for N4.</p>
+          </div>
+        </div>
+      </section>
+      <section id="career">
+        <div class="kicker">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg
+          >05 · Career development
+        </div>
+        <h2>Career</h2>
+        <h3>Experience</h3>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+                ></path>
+              </svg>
+            </div>
+            <div class="meta">Middle-school internship · Year 9</div>
+            <h4>Aero club — work placement</h4>
+            <p>
+              Observation placement at an aero club. teamwork, aviation, safety
+              and creativity
+            </p>
+          </div>
+        </div>
+        <h3>Internships</h3>
+        <div class="tl">
+          <div class="it rv in" style="">
+            <b>Workshop internship (6 to 8 weeks)</b
+            ><span>S6 · summer 2027 · Searching</span>
+          </div>
+          <div class="it rv in" style="">
+            <b>Year 2 internship, in software development</b
+            ><span>S8 · 2028 · Upcoming</span>
+          </div>
+        </div>
+        <h3>Career Project — Elevator pitch · UVP (EN, 2–3 min)</h3>
+        <div class="video">
+          <svg
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16"></polygon></svg
+          ><br />Video coming soon
+        </div>
+        <div class="grid" style="margin-top: 14px">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 21a8 8 0 0 1 16 0"></path>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Present</h4>
+            <p>Year 1 engineering student at ENSEEIHT, software-oriented</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
+                <path d="M6 12v5c3 2 9 2 12 0v-5"></path>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Past</h4>
+            <p>MP2I – MPI* prep in Marseille</p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <circle cx="12" cy="12" r="5"></circle>
+                <circle cx="12" cy="12" r="1"></circle>
+              </svg>
+            </div>
+            <div class="meta"></div>
+            <h4>Future</h4>
+            <p>My 3 role models and my 3 mobility projects</p>
+          </div>
+        </div>
+        <h3>Documents</h3>
+        <a class="btn" href="assets/CV-FR.pdf"
+          ><svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+            ></path>
+            <path d="M14 3v6h6"></path></svg
+          >CV in French</a
+        ><a class="btn" href="assets/CV-EN.pdf"
+          ><svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+            ></path>
+            <path d="M14 3v6h6"></path></svg
+          >CV in English</a
+        ><a
+          class="btn"
+          href="https://www.linkedin.com/in/justin-maurin-682286331/"
+          ><svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 21a8 8 0 0 1 16 0"></path></svg
+          >LinkedIn</a
+        >
+        <h3>My role models</h3>
+        <div class="grid">
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+                ></path>
+              </svg>
+            </div>
+            <div class="meta">Software Profile</div>
+            <h4>Paul B.</h4>
+            <p>Aerospace company · Friend of mine</p>
+            <p>
+              <b>Role</b> · Embedded software engineer: developing and
+              validating critical software.
+            </p>
+            <p>
+              <b>Background</b> · ENSEEIHT, then several years in R&amp;D before
+              leading a team.
+            </p>
+            <p>
+              <b>Key takeaway</b> · The importance of rigour and verification
+              methods in critical software.
+            </p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div class="meta">Software Profile</div>
+            <h4>Louis R.</h4>
+            <p>Software vendor · ENSEEIHT alumnus</p>
+            <p>
+              <b>Role</b> · Software architect: designing platforms and making
+              technical choices.
+            </p>
+            <p>
+              <b>Background</b> · Developer, then tech lead, with a two-year
+              assignment in Japan.
+            </p>
+            <p>
+              <b>Key takeaway</b> · Working abroad accelerates a career and
+              opens international projects.
+            </p>
+          </div>
+          <div class="card rv in" style="">
+            <div class="ico">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"></path>
+              </svg>
+            </div>
+            <div class="meta">Software Profile</div>
+            <h4>Adam S.</h4>
+            <p>Godot Foundation</p>
+            <p>
+              <b>Role</b> · Former Web team lead, full-time contractor at the
+              Godot Foundation.
+            </p>
+            <p><b>Background</b> · Master’s CS in Canada.</p>
+            <p>
+              <b>Key takeaway</b> · Languages with strong guarantees are
+              becoming a real professional asset.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="foot">
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="m3 7 9 6 9-6"></path>
+      </svg>
+      justin.maurin@etu.inp-n7.fr ·
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"></path>
+        <circle cx="12" cy="9" r="2.5"></circle>
+      </svg>
+      Toulouse ·
+      <a href="https://www.linkedin.com/in/justin-maurin-682286331/">LinkedIn</a
+      ><br />© 2026 Justin Maurin · Static site, no cookies
+    </footer>
+    <script>
+      /* ============ CONFIG — edit only this part ============ */
+      const C = {
+        name: "Justin Maurin",
+        initials: "JM",
+        photo: "assets/photo.jpg", // photo: "assets/photo.jpg" (otherwise initials)
+        tagline: "Engineering student · ENSEEIHT, Toulouse INP",
+        headline:
+          "I build <em>robust software</em>, from low-level code to full applications.",
+        intro:
+          "After two years of preparatory classes (MP2I – MPI*), I joined ENSEEIHT to specialise in software engineering. I enjoy demanding languages (C, Ada, Rust, OCaml) and code that can be verified and maintained.",
+        location: "Toulouse · SN",
+        email: "justin.maurin@etu.inp-n7.fr",
+        linkedin: "https://www.linkedin.com/in/justin-maurin-682286331/",
+        cv: { fr: "assets/CV-FR.pdf", en: "assets/CV-EN.pdf" },
+        skills: [
+          "C",
+          "OCaml",
+          "Ada",
+          "Python",
+          "Rust",
+          "English B2/C1",
+          "Japanese N5",
+        ],
+        softSkills: [
+          [
+            "Rigour",
+            "Two years of prep: reasoning, proving and checking every step.",
+          ],
+          [
+            "Perseverance",
+            "A demanding MPI* track with a goal held over the long term.",
+          ],
+          [
+            "Curiosity",
+            "From low-level (C, Rust) to functional (OCaml), I pick up new paradigms quickly.",
+          ],
+          ["Teamwork", "Group projects, with code shared through Git."],
+        ],
+        tabs: {
+          // id = URL anchor (#welcome…). Only change the labels.
+          welcome: "Welcome",
+          engineering: "Engineering",
+          mobility: "International",
+          sustainability: "Sustainability",
+          sport: "Activities",
+          career: "Career",
+        },
+        roadmap: [
+          ["2024", "Lycée Janetti", "Baccalauréat — Très Bien honours"],
+          ["2024–2026", "CPGE MP2I – MPI*", "Lycée Thiers, Marseille"],
+          [
+            "Since Sept. 2026",
+            "Engineering cycle — Year 1",
+            "ENSEEIHT, Toulouse INP",
+          ],
+          ["Summer 2027", "Workshop internship (S6)", "Search in progress"],
+          ["2027–2028", "Year 2, software track", "S8 internship"],
+          ["Autumn 2028", "International mobility (S9)", "17 weeks minimum"],
+          ["2029", "Engineering degree", "Master’s level"],
+        ],
+        projects: [
+          {
+            icon: "headphones",
+            title: "A Loud Sight — a video game for the blind",
+            kind: "TIPE · CPGE 2025–2026",
+            tags: ["Game design", "Audio", "Accessibility"],
+            summary: "A video game playable without sight, built around sound.",
+            S: "TIPE research project in preparatory classes, on accessibility in video games.",
+            T: "Design a game that blind players can enjoy fully, using audio as the main interface.",
+            A: "Game in Godot Engine",
+            R: "Concluding with training of users",
+            link: "",
+          },
+          {
+            icon: "music",
+            title: "Personal music projects",
+            kind: "Personal projects · ongoing",
+            tags: ["Ableton", "Bitwig", "Music production"],
+            summary:
+              "Original tracks composed and produced on Ableton Live and Bitwig.",
+            S: "Self-taught music production alongside my studies.",
+            T: "Compose, arrange and mix complete tracks.",
+            A: "Sound design, arrangement and mixing in Ableton and Bitwig.",
+            R: "2 EPs and 2 Singles.",
+            link: "",
+          },
+          {
+            title: "Ada project — Jeu du Devin",
+            kind: "ENSEEIHT · 2026",
+            tags: ["Ada", "Software engineering"],
+            summary: "",
+            S: "Context: programming project at ENSEEIHT.",
+            T: "Code and refine project.",
+            A: "Game where an AI have to guess the number you think of.",
+            R: "Measurable result.",
+            link: "",
+          },
+        ],
+        mobility: {
+          langs: [
+            ["French", "Native"],
+            ["English", "B2 / C1"],
+            ["Japanese", "N5 (JLPT)"],
+          ],
+          projects: [
+            {
+              where: "Japan · Tokyo",
+              school: "",
+              desc: "",
+            },
+          ],
+        },
+        civic: {
+          hours: "Civic engagement: TBD",
+          items: [
+            [
+              "The trial of King Kong",
+              "Participatory theatre · Year 1",
+              "Interactive play on sexist and sexual violence and its consequences: I took part in the performance and the discussion that followed.",
+            ],
+            [
+              "Futur Proche festival",
+              "Festival · Toulouse",
+              "Conferences and workshops with ENSEEIHT and the Toulouse universities on climate challenges, seen through innovations under development.",
+            ],
+          ],
+        },
+        sport: [
+          [
+            "Music",
+            "Ableton Live · Bitwig",
+            "I compose and produce music: creativity, patience and attention to detail.",
+          ],
+          [
+            "Table tennis",
+            "Hobby",
+            "Reflexes, concentration and a competitive spirit.",
+          ],
+          ["Climbing", "Hobby", "Problem solving, trust and perseverance."],
+          [
+            "Mathematics",
+            "Passion",
+            "Curiosity for proofs and puzzles, well beyond the prep years.",
+          ],
+          ["Japanese", "Interest", "Self-taught, level N5, aiming for N4."],
+        ],
+        career: {
+          experience: [
+            [
+              "Middle-school internship · Year 9",
+              "Aero club — work placement",
+              "Observation placement at an aero club.",
+            ],
+          ],
+          internships: [
+            [
+              "S6 · summer 2027",
+              "Workshop internship (6 to 8 weeks)",
+              "Searching",
+            ],
+            [
+              "S8 · 2028",
+              "Year 2 internship, in software development",
+              "Upcoming",
+            ],
+          ],
+          pitchVideo:
+            "https://www.youtube.com/embed/VZrDxD0Za9I?si=g7d4LiStX3CG15j0", // paste the embed URL here: https://www.youtube.com/embed/XXXX
+          pitchStructure: [
+            [
+              "Present",
+              "Year 1 engineering student at ENSEEIHT, software-oriented",
+            ],
+            ["Past", "MP2I – MPI* prep in Marseille"],
+            ["Future", "My 3 role models and my 3 mobility projects"],
+          ],
+          roleModels: [
+            {
+              name: "Camille R.",
+              org: "Aerospace company · Friend of mine",
+              src: "",
+              role: "Embedded software engineer: developing and validating critical software.",
+              path: "ENSEEIHT, then several years in R&D before leading a team.",
+              learn:
+                "The importance of rigour and verification methods in critical software.",
+            },
+            {
+              name: "Louis R.",
+              org: "Software vendor · ENSEEIHT alumnus",
+              src: "",
+              role: "Software architect: designing platforms and making technical choices.",
+              path: "Developer, then tech lead, with a two-year assignment in Japan.",
+              learn:
+                "Working abroad accelerates a career and opens international projects.",
+            },
+            {
+              name: "Adam S.",
+              org: "Godot Foundation",
+              src: "",
+              role: "Godot Engine Web team lead, full-time contractor at the Godot Foundation",
+              path: "Master degree in CS in Canada",
+              learn:
+                "Languages with strong guarantees are becoming a real professional asset.",
+            },
+          ],
+        },
+      };
+      /* ============ ENGINE — no need to edit ============ */
+      const $ = (s, r = document) => r.querySelector(s),
+        h = String.raw;
+      const P = {
+        code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+        music:
+          '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+        mountain: '<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>',
+        plane:
+          '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+        headphones:
+          '<path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-5H5a2 2 0 0 0-2 2z"/>',
+        drama:
+          '<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/>',
+        leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5-6"/>',
+        graduation:
+          '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>',
+        globe:
+          '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/>',
+        briefcase:
+          '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+        user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+        users:
+          '<circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a5 5 0 0 1 5 5"/>',
+        sigma: '<path d="M18 7V4H6l6 8-6 8h12v-3"/>',
+        racket:
+          '<circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/><circle cx="19" cy="5" r="1.5"/>',
+        language:
+          '<path d="M5 8h8M9 4v4M7 8c0 4 3 6 6 7M11 8c0 3-2 6-6 8"/><path d="m13 20 4-9 4 9M14.5 17h5"/>',
+        check: '<circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/>',
+        search: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
+        mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+        pin: '<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+        file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/>',
+        play: '<circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16"/>',
+        target:
+          '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+        shield: '<path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/>',
+        heart:
+          '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+        star: '<polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/>',
+      };
+      const ic = (n, z = 18) =>
+        `<svg width="${z}" height="${z}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n] || P.star}</svg>`;
+      const cardI = (n, ...a) =>
+        card(...a).replace(
+          '<div class="card">',
+          '<div class="card"><div class="ico">' + ic(n, 22) + "</div>",
+        );
+      const card = (m, t, p, x = "") =>
+        `<div class="card"><div class="meta">${m}</div><h4>${t}</h4><p>${p}</p>${x}</div>`;
+      const tl = (a) =>
+        `<div class="tl">${a.map((r) => `<div class="it"><b>${r[1]}</b><span>${r[0]}${r[2] ? " · " + r[2] : ""}</span></div>`).join("")}</div>`;
+      const S = {};
+      S.welcome =
+        () => `<div class="hero"><div><div class="kicker">${C.tagline}</div><h1>${C.headline}</h1><p class="lead">${C.intro}</p>
+<a class="btn p" href="#engineering">View my projects</a><a class="btn" href="${C.cv.fr}">CV (FR)</a><a class="btn" href="${C.cv.en}">CV (EN)</a>
+<p class="meta" style="margin-top:18px">${C.location}</p></div>
+<div class="art"><div class="photo">${C.photo ? `<img src="${C.photo}" alt="Portrait of ${C.name}">` : C.initials}</div>${["code", "music", "mountain", "plane"].map((n, i) => `<span class="chip c${i}">${ic(n, 22)}</span>`).join("")}</div></div>
+<div>${C.skills.map((s) => `<span class="tag">${ic(/English|Japanese/.test(s) ? "language" : "code", 14)}${s}</span>`).join("")}</div><div class="wave" aria-hidden="true">${Array.from({ length: 44 }, (_, i) => `<i style="--d:${(i * 0.07).toFixed(2)}s;--h:${(20 + Math.abs(Math.sin(i * 0.7)) * 80) | 0}%"></i>`).join("")}</div>
+<h3>Soft skills</h3><div class="grid">${C.softSkills.map((s, i) => cardI(["check", "mountain", "search", "users"][i], "", s[0], s[1])).join("")}</div>`;
+      S.engineering =
+        () => `<div class="kicker">${ic("graduation", 16)}01 · Engineering course</div><h2>${C.tabs.engineering}</h2>
+<h3>Roadmap</h3>${tl(C.roadmap)}<h3>Projects & productions</h3><div class="grid">${C.projects
+          .map((p) =>
+            cardI(
+              p.icon || "code",
+              p.kind,
+              p.title,
+              p.summary,
+              `<div>${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div><details><summary>Details (STAR method)</summary><div class="star"><p><b>Situation</b> ${p.S}</p><p><b>Task</b> ${p.T}</p><p><b>Action</b> ${p.A}</p><p><b>Result</b> ${p.R}</p></div></details>${p.link ? `<p><a href="${p.link}">View project ↗</a></p>` : ""}`,
+            ),
+          )
+          .join("")}</div>`;
+      S.mobility = () => {
+        const m = C.mobility;
+        return `<div class="kicker">${ic("globe", 16)}02 · International mobility</div><h2>${C.tabs.mobility}</h2>
+<h3>Languages</h3><div class="grid">${m.langs.map((l) => cardI("language", "Level", l[0], l[1])).join("")}</div>
+<h3>Mobility project</h3><div class="grid">${m.projects.map((p, i) => cardI("globe", p.where, p.school, p.desc)).join("")}</div>`;
+      };
+      S.sustainability =
+        () => `<div class="kicker">${ic("leaf", 16)}03 · Sustainability & civic engagement</div><h2>${C.tabs.sustainability}</h2>
+<div class="grid">${C.civic.items.map((i, n) => cardI(["drama", "leaf"][n] || "leaf", i[1], i[0], i[2])).join("")}</div><p class="meta" style="margin-top:20px">${C.civic.hours}</p>`;
+      S.sport = () =>
+        `<div class="kicker">${ic("heart", 16)}04 · Sport & other activities</div><h2>${C.tabs.sport}</h2><div class="grid">${C.sport.map((i, n) => cardI(["music", "racket", "mountain", "sigma", "language"][n] || "star", i[1], i[0], i[2])).join("")}</div>`;
+      S.career = () => {
+        const k = C.career;
+        return `<div class="kicker">${ic("briefcase", 16)}05 · Career development</div><h2>${C.tabs.career}</h2>
+<h3>Experience</h3><div class="grid">${k.experience.map((e) => cardI("plane", e[0], e[1], e[2])).join("")}</div><h3>Internships</h3>${tl(k.internships.map((i) => [i[0], i[1], i[2]]))}
+<h3>Career Project — Elevator pitch · UVP (EN, 2–3 min)</h3>
+<div class="video">${k.pitchVideo ? `<iframe src="${k.pitchVideo}" title="Elevator pitch" allowfullscreen></iframe>` : `${ic("play", 44)}<br>Video coming soon`}</div>
+<div class="grid" style="margin-top:14px">${k.pitchStructure.map((s, n) => cardI(["user", "graduation", "target"][n] || "star", "", s[0], s[1])).join("")}</div>
+<h3>Documents</h3><a class="btn" href="${C.cv.fr}">${ic("file", 16)}CV in French</a><a class="btn" href="${C.cv.en}">${ic("file", 16)}CV in English</a><a class="btn" href="${C.linkedin}">${ic("user", 16)}LinkedIn</a>
+<h3>My role models</h3><div class="grid">${k.roleModels.map((r, n) => cardI(["plane", "code", "shield"][n] || "user", r.src, r.name, r.org, `<p><b>Role</b> · ${r.role}</p><p><b>Background</b> · ${r.path}</p><p><b>Key takeaway</b> · ${r.learn}</p>`)).join("")}</div>`;
+      };
+      const ids = Object.keys(C.tabs);
+      $("#nav").innerHTML =
+        `<a class="logo" href="#welcome">${C.name.split(" ")[0]}<b>.</b></a>` +
+        ids
+          .map(
+            (i) => `<a class="t" data-id="${i}" href="#${i}">${C.tabs[i]}</a>`,
+          )
+          .join("") +
+        `<button class="ghost" id="th" aria-label="Toggle theme">◐</button>`;
+      $("#main").innerHTML = ids
+        .map((i) => `<section id="${i}">${S[i]()}</section>`)
+        .join("");
+      $("#foot").innerHTML =
+        `${ic("mail", 15)} ${C.email} · ${ic("pin", 15)} Toulouse · <a href="${C.linkedin}">LinkedIn</a><br>© 2026 ${C.name} · Static site, no cookies`;
+      const rv = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              rv.unobserve(e.target);
+              setTimeout(() => (e.target.style.transitionDelay = ""), 900);
+            }
+          }),
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".card,.tl .it").forEach((el, i) => {
+        el.classList.add("rv");
+        el.style.transitionDelay = (i % 5) * 70 + "ms";
+        rv.observe(el);
+      });
+      const obs = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting)
+              document
+                .querySelectorAll("nav a.t")
+                .forEach((a) =>
+                  a.classList.toggle("on", a.dataset.id === e.target.id),
+                );
+          }),
+        { rootMargin: "-30% 0px -60% 0px" },
+      );
+      ids.forEach((i) => obs.observe($("#" + i)));
+      $("#th").onclick = () => {
+        const r = document.documentElement,
+          l = matchMedia("(prefers-color-scheme:light)").matches;
+        const cur = r.dataset.theme || (l ? "light" : "dark");
+        r.dataset.theme = cur === "dark" ? "light" : "dark";
+      };
+    </script>
+  </body>
+</html>
